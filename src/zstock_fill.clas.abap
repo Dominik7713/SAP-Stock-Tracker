@@ -1,0 +1,231 @@
+CLASS zstock_fill DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+
+    INTERFACES if_oo_adt_classrun .
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zstock_fill IMPLEMENTATION.
+
+
+  METHOD if_oo_adt_classrun~main.
+  DATA: stock_full_data TYPE TABLE OF zstock_data_fin.
+
+    stock_full_data = VALUE #(
+            ( zstock_ticker = 'LON:CSPX' zstock_name = 'iShares Core S&P 500 UCITS ETF USD (Acc)' zstock_price = '730.38' zstock_changepct = '-0.0016' zstock_priceopen = '777.11' zstock_currency = 'USD' zstock_closeyest = '733.13' zstock_high = '777.11' )
+            ( zstock_ticker = 'AMS:VWCE' zstock_name = 'Vanguard FTSE All-World UCITS - (USD) Accumulating ETF' zstock_price = '147.8' zstock_changepct = '0.0017'
+            zstock_priceopen = '147.68' zstock_currency = 'EUR' zstock_closeyest = '147.55' zstock_high = '148.07' )
+            ( zstock_ticker = 'EPA:UBI' zstock_name = 'Ubisoft Entertainment SA' zstock_price = '4.25' zstock_changepct = '0.0105' zstock_priceopen = '4.25' zstock_currency = 'EUR' zstock_closeyest = '4.2' zstock_high = '4.34' )
+            ( zstock_ticker = 'MSFT' zstock_name = 'Microsoft Corp' zstock_price = '395.68' zstock_changepct = '-0.0136' zstock_priceopen = '399.22' zstock_currency = 'USD' zstock_closeyest = '401.32' zstock_high = '400.52' )
+            ( zstock_ticker = 'NVDA' zstock_name = 'NVIDIA Corp' zstock_price = '184.86' zstock_changepct = '0.0112' zstock_priceopen = '181.75' zstock_currency = 'USD' zstock_closeyest = '182.81' zstock_high = '184.91' )
+            ( zstock_ticker = 'AAPL' zstock_name = 'Apple Inc' zstock_price = '263.43' zstock_changepct = '0.0267' zstock_priceopen = '258.05' zstock_currency = 'USD' zstock_closeyest = '255.78' zstock_high = '262.85' )
+            ( zstock_ticker = 'AMZN' zstock_name = 'Amazon.com Inc' zstock_price = '199.86' zstock_changepct = '0.0036' zstock_priceopen = '198.13' zstock_currency = 'USD' zstock_closeyest = '198.79' zstock_high = '201.74' )
+            ( zstock_ticker = 'META' zstock_name = 'Meta Platforms Inc' zstock_price = '638.04' zstock_changepct = '-0.0044' zstock_priceopen = '639.5' zstock_currency = 'USD' zstock_closeyest = '639.77' zstock_high = '642.21' )
+            ( zstock_ticker = 'AVGO' zstock_name = 'Broadcom Inc' zstock_price = '330.7' zstock_changepct = '0.017' zstock_priceopen = '319.68' zstock_currency = 'USD' zstock_closeyest = '325.17' zstock_high = '332.88' )
+            ( zstock_ticker = 'GOOGL' zstock_name = 'Alphabet Inc Class A' zstock_price = '300.74' zstock_changepct = '-0.0143' zstock_priceopen = '300.04' zstock_currency = 'USD' zstock_closeyest = '305.72' zstock_high = '304.44' )
+            ( zstock_ticker = 'TSLA' zstock_name = 'Tesla Inc' zstock_price = '405.6' zstock_changepct = '-0.0287' zstock_priceopen = '412.36' zstock_currency = 'USD' zstock_closeyest = '417.44' zstock_high = '413.72' )
+            ( zstock_ticker = 'BRK.B' zstock_name = 'Berkshire Hathaway Inc Class B' zstock_price = '502.6' zstock_changepct = '0.0106' zstock_priceopen = '500.02' zstock_currency = 'USD' zstock_closeyest = '497.55' zstock_high = '506.09' )
+            ( zstock_ticker = 'GOOG' zstock_name = 'Alphabet Inc Class C' zstock_price = '302.68' zstock_changepct = '-0.0131' zstock_priceopen = '300.64' zstock_currency = 'USD' zstock_closeyest = '306.02' zstock_high = '304.89' )
+            ( zstock_ticker = 'JPM' zstock_name = 'JPMorgan Chase & Co' zstock_price = '306.23' zstock_changepct = '0.0105' zstock_priceopen = '302.76' zstock_currency = 'USD' zstock_closeyest = '302.55' zstock_high = '308.24' )
+            ( zstock_ticker = 'V' zstock_name = 'Visa Inc' zstock_price = '318.85' zstock_changepct = '0.0159' zstock_priceopen = '314.41' zstock_currency = 'USD' zstock_closeyest = '314.08' zstock_high = '321.38' )
+            ( zstock_ticker = 'LLY' zstock_name = 'Eli Lilly And Co' zstock_price = '1042.5' zstock_changepct = '0.0024' zstock_priceopen = '1045.61' zstock_currency = 'USD' zstock_closeyest = '1040' zstock_high = '1067' )
+            ( zstock_ticker = 'NFLX' zstock_name = 'Netflix Inc' zstock_price = '76.38' zstock_changepct = '-0.0014' zstock_priceopen = '76.92' zstock_currency = 'USD' zstock_closeyest = '76.87' zstock_high = '77.87' )
+            ( zstock_ticker = 'MA' zstock_name = 'Mastercard Inc' zstock_price = '521.28' zstock_changepct = '0.0044' zstock_priceopen = '515' zstock_currency = 'USD' zstock_closeyest = '518.36' zstock_high = '525.86' )
+            ( zstock_ticker = 'COST' zstock_name = 'Costco Wholesale Corp' zstock_price = '1016.52' zstock_changepct = '-0.0036' zstock_priceopen = '1022.34' zstock_currency = 'USD' zstock_closeyest = '1018.48' zstock_high = '1028.44' )
+            ( zstock_ticker = 'XOM' zstock_name = 'Exxon Mobil Corp' zstock_price = '145.54' zstock_changepct = '-0.0196' zstock_priceopen = '148.2' zstock_currency = 'USD' zstock_closeyest = '148.45' zstock_high = '149.13' )
+            ( zstock_ticker = 'WMT' zstock_name = 'Walmart Inc' zstock_price = '128.47' zstock_changepct = '-0.0422' zstock_priceopen = '133.11' zstock_currency = 'USD' zstock_closeyest = '133.89' zstock_high = '134.69' )
+            ( zstock_ticker = 'PG' zstock_name = 'Procter & Gamble Co' zstock_price = '159.24' zstock_changepct = '-0.0054' zstock_priceopen = '159.95' zstock_currency = 'USD' zstock_closeyest = '160.07' zstock_high = '162.17' )
+            ( zstock_ticker = 'JNJ' zstock_name = 'Johnson & Johnson' zstock_price = '243.13' zstock_changepct = '-0.0016' zstock_priceopen = '244.13' zstock_currency = 'USD' zstock_closeyest = '243.45' zstock_high = '244.49' )
+            ( zstock_ticker = 'HD' zstock_name = 'Home Depot Inc' zstock_price = '381.75' zstock_changepct = '-0.0252' zstock_priceopen = '392.23' zstock_currency = 'USD' zstock_closeyest = '391.05' zstock_high = '394' )
+            ( zstock_ticker = 'ABBV' zstock_name = 'AbbVie Common Stock' zstock_price = '232.63' zstock_changepct = '0.0025' zstock_priceopen = '232.66' zstock_currency = 'USD' zstock_closeyest = '231.5' zstock_high = '235.25' )
+            ( zstock_ticker = 'BAC' zstock_name = 'Bank of America Corp' zstock_price = '52.67' zstock_changepct = '0.0044' zstock_priceopen = '53.04' zstock_currency = 'USD' zstock_closeyest = '52.55' zstock_high = '53.55' )
+            ( zstock_ticker = 'UNH' zstock_name = 'UnitedHealth Group Inc' zstock_price = '290.97' zstock_changepct = '-0.009' zstock_priceopen = '294' zstock_currency = 'USD' zstock_closeyest = '293.19' zstock_high = '294.23' )
+            ( zstock_ticker = 'KO' zstock_name = 'Coca-Cola Co' zstock_price = '79.08' zstock_changepct = '0.0048' zstock_priceopen = '78.99' zstock_currency = 'USD' zstock_closeyest = '78.68' zstock_high = '79.54' )
+            ( zstock_ticker = 'PM' zstock_name = 'Philip Morris International Inc.' zstock_price = '183.82' zstock_changepct = '-0.0188' zstock_priceopen = '187.56' zstock_currency = 'USD' zstock_closeyest = '187.51' zstock_high = '187.56' )
+            ( zstock_ticker = 'CRM' zstock_name = 'Salesforce Inc' zstock_price = '183.75' zstock_changepct = '-0.0289' zstock_priceopen = '190.97' zstock_currency = 'USD' zstock_closeyest = '189.72' zstock_high = '193' )
+            ( zstock_ticker = 'ORCL' zstock_name = 'Oracle Corp' zstock_price = '153.37' zstock_changepct = '-0.0372' zstock_priceopen = '157.98' zstock_currency = 'USD' zstock_closeyest = '160.14' zstock_high = '159.28' )
+            ( zstock_ticker = 'CSCO' zstock_name = 'Cisco Systems Inc' zstock_price = '77.07' zstock_changepct = '-0.0014' zstock_priceopen = '76.95' zstock_currency = 'USD' zstock_closeyest = '76.85' zstock_high = '77.57' )
+            ( zstock_ticker = 'GE' zstock_name = 'General Electric Co' zstock_price = '327.88' zstock_changepct = '0.0422' zstock_priceopen = '315' zstock_currency = 'USD' zstock_closeyest = '315.41' zstock_high = '330.4' )
+            ( zstock_ticker = 'PLTR' zstock_name = 'Palantir Technologies Inc' zstock_price = '130.83' zstock_changepct = '-0.0045' zstock_priceopen = '128.9' zstock_currency = 'USD' zstock_closeyest = '131.41' zstock_high = '132.84' )
+            ( zstock_ticker = 'IBM' zstock_name = 'IBM Common Stock' zstock_price = '259.03' zstock_changepct = '-0.0162' zstock_priceopen = '259.2' zstock_currency = 'USD' zstock_closeyest = '262.38' zstock_high = '260.7' )
+            ( zstock_ticker = 'WFC' zstock_name = 'Wells Fargo & Co' zstock_price = '87.77' zstock_changepct = '0.0109' zstock_priceopen = '87.83' zstock_currency = 'USD' zstock_closeyest = '86.98' zstock_high = '88.84' )
+            ( zstock_ticker = 'ABT' zstock_name = 'Abbott Laboratories' zstock_price = '112.19' zstock_changepct = '-0.0043' zstock_priceopen = '113.19' zstock_currency = 'USD' zstock_closeyest = '112.68' zstock_high = '113.59' )
+            ( zstock_ticker = 'MCD' zstock_name = 'McDonald''s Corp' zstock_price = '325.46' zstock_changepct = '-0.0065' zstock_priceopen = '330' zstock_currency = 'USD' zstock_closeyest = '327.58' zstock_high = '332.08' )
+            ( zstock_ticker = 'CVX' zstock_name = 'Chevron Corp' zstock_price = '180.34' zstock_changepct = '-0.0089' zstock_priceopen = '183.3' zstock_currency = 'USD' zstock_closeyest = '181.96' zstock_high = '183.8' )
+            ( zstock_ticker = 'LIN' zstock_name = 'Linde PLC' zstock_price = '481.64' zstock_changepct = '0.0013' zstock_priceopen = '479.13' zstock_currency = 'USD' zstock_closeyest = '481' zstock_high = '483.77' )
+            ( zstock_ticker = 'NOW' zstock_name = 'ServiceNow Inc' zstock_price = '105.42' zstock_changepct = '-0.0155' zstock_priceopen = '109.56' zstock_currency = 'USD' zstock_closeyest = '107.08' zstock_high = '110.85' )
+            ( zstock_ticker = 'DIS' zstock_name = 'Walt Disney Co' zstock_price = '104.95' zstock_changepct = '-0.004' zstock_priceopen = '106.57' zstock_currency = 'USD' zstock_closeyest = '105.45' zstock_high = '107.28' )
+            ( zstock_ticker = 'ACN' zstock_name = 'Accenture Plc' zstock_price = '219.39' zstock_changepct = '-0.0202' zstock_priceopen = '225.62' zstock_currency = 'USD' zstock_closeyest = '224.23' zstock_high = '229.11' )
+            ( zstock_ticker = 'T' zstock_name = 'AT&T Inc' zstock_price = '28.78' zstock_changepct = '0.0024' zstock_priceopen = '28.76' zstock_currency = 'USD' zstock_closeyest = '28.69' zstock_high = '29.06' )
+            ( zstock_ticker = 'ISRG' zstock_name = 'Intuitive Surgical Inc' zstock_price = '490.47' zstock_changepct = '0.0095' zstock_priceopen = '481.22' zstock_currency = 'USD' zstock_closeyest = '485.84' zstock_high = '494.9' )
+            ( zstock_ticker = 'MRK' zstock_name = 'Merck & Co Inc' zstock_price = '121.19' zstock_changepct = '-0.0017' zstock_priceopen = '122.36' zstock_currency = 'USD' zstock_closeyest = '121.41' zstock_high = '123.08' )
+            ( zstock_ticker = 'UBER' zstock_name = 'Uber Technologies Inc' zstock_price = '70.19' zstock_changepct = '0.0019' zstock_priceopen = '70.66' zstock_currency = 'USD' zstock_closeyest = '69.99' zstock_high = '70.98' )
+            ( zstock_ticker = 'GS' zstock_name = 'Goldman Sachs Group Inc' zstock_price = '913.49' zstock_changepct = '0.0111' zstock_priceopen = '907.73' zstock_currency = 'USD' zstock_closeyest = '905.14' zstock_high = '921.55' )
+            ( zstock_ticker = 'INTU' zstock_name = 'Intuit Inc' zstock_price = '379.17' zstock_changepct = '-0.0551' zstock_priceopen = '393.08' zstock_currency = 'USD' zstock_closeyest = '399.4' zstock_high = '397' )
+            ( zstock_ticker = 'VZ' zstock_name = 'Verizon Communications Inc' zstock_price = '48.96' zstock_changepct = '-0.001' zstock_priceopen = '49.3' zstock_currency = 'USD' zstock_closeyest = '48.98' zstock_high = '49.5' )
+            ( zstock_ticker = 'AMD' zstock_name = 'Advanced Micro Devices Inc' zstock_price = '203.5' zstock_changepct = '-0.0185' zstock_priceopen = '202.15' zstock_currency = 'USD' zstock_closeyest = '207.32' zstock_high = '205.3' )
+            ( zstock_ticker = 'ADBE' zstock_name = 'Adobe Inc' zstock_price = '258.73' zstock_changepct = '-0.0167' zstock_priceopen = '265.24' zstock_currency = 'USD' zstock_closeyest = '263.97' zstock_high = '269.13' )
+            ( zstock_ticker = 'RTX' zstock_name = 'Rtx Corp' zstock_price = '203.44' zstock_changepct = '0.0178' zstock_priceopen = '200' zstock_currency = 'USD' zstock_closeyest = '200.06' zstock_high = '204.49' )
+            ( zstock_ticker = 'PEP' zstock_name = 'PepsiCo Inc' zstock_price = '161.11' zstock_changepct = '-0.0291' zstock_priceopen = '166.12' zstock_currency = 'USD' zstock_closeyest = '165.94' zstock_high = '167.54' )
+            ( zstock_ticker = 'BKNG' zstock_name = 'Booking Holdings Inc' zstock_price = '4132.55' zstock_changepct = '-0.0011' zstock_priceopen = '4131.19' zstock_currency = 'USD' zstock_closeyest = '4140.6' zstock_high = '4164.95' )
+            ( zstock_ticker = 'TXN' zstock_name = 'Texas Instruments Inc' zstock_price = '225.67' zstock_changepct = '-0.0017' zstock_priceopen = '226.53' zstock_currency = 'USD' zstock_closeyest = '226.16' zstock_high = '228.45' )
+            ( zstock_ticker = 'QCOM' zstock_name = 'Qualcomm Inc' zstock_price = '142.47' zstock_changepct = '0.0126' zstock_priceopen = '141' zstock_currency = 'USD' zstock_closeyest = '140.7' zstock_high = '143.39' )
+            ( zstock_ticker = 'PGR' zstock_name = 'Progressive Corp' zstock_price = '207.12' zstock_changepct = '0.0134' zstock_priceopen = '207.88' zstock_currency = 'USD' zstock_closeyest = '204.53' zstock_high = '210.1' )
+            ( zstock_ticker = 'CAT' zstock_name = 'Caterpillar Inc' zstock_price = '763.8' zstock_changepct = '-0.0134' zstock_priceopen = '765' zstock_currency = 'USD' zstock_closeyest = '774.2' zstock_high = '774.42' )
+            ( zstock_ticker = 'SPGI' zstock_name = 'S&P Global Inc' zstock_price = '412.9' zstock_changepct = '0.003' zstock_priceopen = '416' zstock_currency = 'USD' zstock_closeyest = '409.54' zstock_high = '422.42' )
+            ( zstock_ticker = 'AXP' zstock_name = 'American Express Co' zstock_price = '344.68' zstock_changepct = '0.0218' zstock_priceopen = '338.73' zstock_currency = 'USD' zstock_closeyest = '337.5' zstock_high = '346.18' )
+            ( zstock_ticker = 'MS' zstock_name = 'Morgan Stanley' zstock_price = '171.63' zstock_changepct = '0.0015' zstock_priceopen = '172.55' zstock_currency = 'USD' zstock_closeyest = '171.15' zstock_high = '174.2' )
+            ( zstock_ticker = 'BSX' zstock_name = 'Boston Scientific Corp' zstock_price = '75.71' zstock_changepct = '0.0146' zstock_priceopen = '75.03' zstock_currency = 'USD' zstock_closeyest = '74.73' zstock_high = '76.82' )
+            ( zstock_ticker = 'BA' zstock_name = 'Boeing Co' zstock_price = '243.95' zstock_changepct = '0.0041' zstock_priceopen = '243.61' zstock_currency = 'USD' zstock_closeyest = '242.96' zstock_high = '244.95' )
+            ( zstock_ticker = 'TMO' zstock_name = 'Thermo Fisher Scientific Inc' zstock_price = '501.19' zstock_changepct = '-0.0049' zstock_priceopen = '502.59' zstock_currency = 'USD' zstock_closeyest = '504.82' zstock_high = '507.15' )
+            ( zstock_ticker = 'SCHW' zstock_name = 'Charles Schwab Corporation Common Stock' zstock_price = '93.34' zstock_changepct = '-0.0033' zstock_priceopen = '94.23' zstock_currency = 'USD' zstock_closeyest = '93.71' zstock_high = '94.47' )
+            ( zstock_ticker = 'TJX' zstock_name = 'TJX Companies Inc' zstock_price = '154.48' zstock_changepct = '0.0008' zstock_priceopen = '155.36' zstock_currency = 'USD' zstock_closeyest = '154.46' zstock_high = '155.68' )
+            ( zstock_ticker = 'NEE' zstock_name = 'NextEra Energy Inc' zstock_price = '92.75' zstock_changepct = '-0.0112' zstock_priceopen = '94.91' zstock_currency = 'USD' zstock_closeyest = '93.8' zstock_high = '95.56' )
+            ( zstock_ticker = 'AMGN' zstock_name = 'Amgen Inc' zstock_price = '373' zstock_changepct = '0.0094' zstock_priceopen = '370.88' zstock_currency = 'USD' zstock_closeyest = '369.19' zstock_high = '374.57' )
+            ( zstock_ticker = 'HON' zstock_name = 'Honeywell International Inc' zstock_price = '242.32' zstock_changepct = '0.0032' zstock_priceopen = '239.67' zstock_currency = 'USD' zstock_closeyest = '241.38' zstock_high = '244.75' )
+            ( zstock_ticker = 'BLK' zstock_name = 'BlackRock Inc' zstock_price = '1066.9' zstock_changepct = '-0.002' zstock_priceopen = '1074.61' zstock_currency = 'USD' zstock_closeyest = '1071.51' zstock_high = '1087.9' )
+            ( zstock_ticker = 'C' zstock_name = 'Citigroup Inc' zstock_price = '113.13' zstock_changepct = '0.0205' zstock_priceopen = '112.3' zstock_currency = 'USD' zstock_closeyest = '110.86' zstock_high = '114.51' )
+            ( zstock_ticker = 'UNP' zstock_name = 'Union Pacific Corp' zstock_price = '262.11' zstock_changepct = '0.0055' zstock_priceopen = '260.99' zstock_currency = 'USD' zstock_closeyest = '260.76' zstock_high = '264.11' )
+            ( zstock_ticker = 'GILD' zstock_name = 'Gilead Sciences Inc' zstock_price = '154.24' zstock_changepct = '-0.0031' zstock_priceopen = '155.04' zstock_currency = 'USD' zstock_closeyest = '154.98' zstock_high = '155.75' )
+            ( zstock_ticker = 'CMCSA' zstock_name = 'Comcast Corp' zstock_price = '31.75' zstock_changepct = '0.0065' zstock_priceopen = '31.67' zstock_currency = 'USD' zstock_closeyest = '31.57' zstock_high = '31.91' )
+            ( zstock_ticker = 'AMAT' zstock_name = 'Applied Materials Inc' zstock_price = '357.15' zstock_changepct = '0.0131' zstock_priceopen = '351' zstock_currency = 'USD' zstock_closeyest = '354.91' zstock_high = '362.63' )
+            ( zstock_ticker = 'ADP' zstock_name = 'Automatic Data Processing Inc' zstock_price = '210.69' zstock_changepct = '-0.0062' zstock_priceopen = '212.43' zstock_currency = 'USD' zstock_closeyest = '212.11' zstock_high = '214.85' )
+            ( zstock_ticker = 'PFE' zstock_name = 'Pfizer Inc' zstock_price = '27.23' zstock_changepct = '-0.012' zstock_priceopen = '27.84' zstock_currency = 'USD' zstock_closeyest = '27.58' zstock_high = '27.87' )
+            ( zstock_ticker = 'SYK' zstock_name = 'Stryker Corp' zstock_price = '369.34' zstock_changepct = '0.009' zstock_priceopen = '369.65' zstock_currency = 'USD' zstock_closeyest = '366.05' zstock_high = '374.79' )
+            ( zstock_ticker = 'DE' zstock_name = 'Deere & Co' zstock_price = '603.19' zstock_changepct = '0.0011' zstock_priceopen = '593.05' zstock_currency = 'USD' zstock_closeyest = '602.92' zstock_high = '607.04' )
+            ( zstock_ticker = 'LOW' zstock_name = 'Lowe''s Companies Inc' zstock_price = '278.68' zstock_changepct = '-0.0303' zstock_priceopen = '287.02' zstock_currency = 'USD' zstock_closeyest = '287.39' zstock_high = '289.86' )
+            ( zstock_ticker = 'ETN' zstock_name = 'Eaton Corporation PLC' zstock_price = '390.5' zstock_changepct = '-0.0004' zstock_priceopen = '386.78' zstock_currency = 'USD' zstock_closeyest = '388.96' zstock_high = '392.73' )
+            ( zstock_ticker = 'GEV' zstock_name = 'GE Vernova Inc' zstock_price = '818.51' zstock_changepct = '0.0238' zstock_priceopen = '794.24' zstock_currency = 'USD' zstock_closeyest = '802.11' zstock_high = '826.67' )
+            ( zstock_ticker = 'PANW' zstock_name = 'Palo Alto Networks Inc' zstock_price = '163.75' zstock_changepct = '-0.0233' zstock_priceopen = '165.68' zstock_currency = 'USD' zstock_closeyest = '166.95' zstock_high = '166.01' )
+            ( zstock_ticker = 'DHR' zstock_name = 'Danaher Corp' zstock_price = '205.48' zstock_changepct = '-0.0346' zstock_priceopen = '201.8' zstock_currency = 'USD' zstock_closeyest = '212.58' zstock_high = '208.5' )
+            ( zstock_ticker = 'COF' zstock_name = 'Capital One Financial Corp' zstock_price = '206.96' zstock_changepct = '-0.0027' zstock_priceopen = '207.5' zstock_currency = 'USD' zstock_closeyest = '207.37' zstock_high = '211.22' )
+            ( zstock_ticker = 'TMUS' zstock_name = 'T-Mobile Us Inc' zstock_price = '221.28' zstock_changepct = '0.0081' zstock_priceopen = '220.8' zstock_currency = 'USD' zstock_closeyest = '219.5' zstock_high = '224.29' )
+            ( zstock_ticker = 'MMC' zstock_name = 'NA' zstock_price = '0' zstock_changepct = '0' zstock_priceopen = '0' zstock_currency = 'NA' zstock_closeyest = '0' zstock_high = '0' )
+            ( zstock_ticker = 'VRTX' zstock_name = 'Vertex Pharmaceuticals Inc' zstock_price = '477.27' zstock_changepct = '-0.0343' zstock_priceopen = '489.46' zstock_currency = 'USD' zstock_closeyest = '491.47' zstock_high = '494.05' )
+            ( zstock_ticker = 'COP' zstock_name = 'ConocoPhillips' zstock_price = '108.51' zstock_changepct = '-0.0252' zstock_priceopen = '111.66' zstock_currency = 'USD' zstock_closeyest = '111.43' zstock_high = '112.97' )
+            ( zstock_ticker = 'ADI' zstock_name = 'Analog Devices Inc' zstock_price = '337.01' zstock_changepct = '-0.0028' zstock_priceopen = '335.6' zstock_currency = 'USD' zstock_closeyest = '337.1' zstock_high = '338.91' )
+            ( zstock_ticker = 'MDT' zstock_name = 'Medtronic PLC' zstock_price = '97.06' zstock_changepct = '-0.0243' zstock_priceopen = '95.88' zstock_currency = 'USD' zstock_closeyest = '99.46' zstock_high = '98.12' )
+            ( zstock_ticker = 'CB' zstock_name = 'Chubb Ltd' zstock_price = '331.2' zstock_changepct = '0.0193' zstock_priceopen = '328.02' zstock_currency = 'USD' zstock_closeyest = '324.95' zstock_high = '331.74' )
+    ).
+
+    MODIFY zstock_data_fin FROM TABLE @stock_full_data.
+
+    IF sy-subrc <> 0.
+        out->write( 'Error when loading data.' ).
+    ELSE.
+            out->write( |Count: { sy-dbcnt }| ).
+    ENDIF.
+
+    DATA: stock_rating_data TYPE TABLE OF zstock_data_rat.
+    stock_rating_data = VALUE #(
+            ( zstock_ticker = 'LON:CSPX' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'AMS:VWCE' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'EPA:UBI' zstock_rating = 'Sell' )
+            ( zstock_ticker = 'MSFT' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'NVDA' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'AAPL' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'AMZN' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'META' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'AVGO' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'GOOGL' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'TSLA' zstock_rating = 'Hold' )
+            ( zstock_ticker = 'BRK.B' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'GOOG' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'JPM' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'V' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'LLY' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'NFLX' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'MA' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'COST' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'XOM' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'WMT' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'PG' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'JNJ' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'HD' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'ABBV' zstock_rating = 'Hold' )
+            ( zstock_ticker = 'BAC' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'UNH' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'KO' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'PM' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'CRM' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'ORCL' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'CSCO' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'GE' zstock_rating = 'Hold' )
+            ( zstock_ticker = 'PLTR' zstock_rating = 'Hold' )
+            ( zstock_ticker = 'IBM' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'WFC' zstock_rating = 'Hold' )
+            ( zstock_ticker = 'ABT' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'MCD' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'CVX' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'LIN' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'NOW' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'DIS' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'ACN' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'T' zstock_rating = 'Hold' )
+            ( zstock_ticker = 'ISRG' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'MRK' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'UBER' zstock_rating = 'Hold' )
+            ( zstock_ticker = 'GS' zstock_rating = 'Hold' )
+            ( zstock_ticker = 'INTU' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'VZ' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'AMD' zstock_rating = 'Hold' )
+            ( zstock_ticker = 'ADBE' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'RTX' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'PEP' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'BKNG' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'TXN' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'QCOM' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'PGR' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'CAT' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'SPGI' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'AXP' zstock_rating = 'Hold' )
+            ( zstock_ticker = 'MS' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'BSX' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'BA' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'TMO' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'SCHW' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'TJX' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'NEE' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'AMGN' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'HON' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'BLK' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'C' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'UNP' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'GILD' zstock_rating = 'Hold' )
+            ( zstock_ticker = 'CMCSA' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'AMAT' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'ADP' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'PFE' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'SYK' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'DE' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'LOW' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'ETN' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'GEV' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'PANW' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'DHR' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'COF' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'TMUS' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'MMC' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'VRTX' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'COP' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'ADI' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'MDT' zstock_rating = 'Buy' )
+            ( zstock_ticker = 'CB' zstock_rating = 'Buy' )
+    ).
+    MODIFY zstock_data_rat FROM TABLE @stock_rating_data.
+
+    IF sy-subrc <> 0.
+        out->write( 'Error when loading data.' ).
+    ELSE.
+        out->write( |Count: { sy-dbcnt }| ).
+    ENDIF.
+
+  ENDMETHOD.
+ENDCLASS.

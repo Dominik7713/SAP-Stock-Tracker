@@ -1,0 +1,4 @@
+@EndUserText.label: 'SERVICE FOR CDS'
+define service ZSTOCK_CDS_SERVICE {
+  expose ZSTOCK_CDS;
+}
